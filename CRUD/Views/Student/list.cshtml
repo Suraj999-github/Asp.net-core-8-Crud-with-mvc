@@ -1,0 +1,64 @@
+﻿<div class="container mt-3">
+    <h2>Student List</h2>
+    <a type="button" class="btn btn-primary" href="/student/add">+ Add New</a>
+    <div class="row">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Middle Name</th>
+                    <th>Last Name</th>
+                    <th>Phone Number</th>
+                    <th>Salutation</th>
+                    <th>Created Date</th>
+                    <th>Action</th>
+                </tr>                
+            </thead>
+            <tbody id="studentList">
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section scripts {
+<script> 
+    $(document).ready(function () {
+        ListStudents();
+    });
+    function ListStudents() {
+            var mytable = document.getElementById("studentList");
+            mytable.innerHTML = "";
+    $.ajax({
+        url: '/student/list',
+        type: 'POST',
+        //data: {
+        //    'numberOfWords': 10
+       // },
+        dataType: 'json',
+        success: function (data) {
+
+            console.log(data);
+            if (data != null && data != undefined) {
+                var response = "";
+                for (let i = 0; i < data.length; i++) {
+                response = response + "<tr>";
+                response = response + "<td>" + data[i].firstName + "</td>";
+                response = response + "<td>" + data[i].middleName + "</td>";
+                response = response + "<td>" + data[i].lastName + "</td>";
+                response = response + "<td>" + data[i].phoneNumber + "</td>";
+                response = response + "<td>" + data[i].salutation + "</td>";
+                response = response + "<td>" + data[i].createdDate + "</td>";
+                response = response + "<td> <a type='button' class='btn btn-danger' href='/student/update/" + data[i].id + "'>Update</a></td>";
+                response = response + "</tr>";
+                }
+                mytable.innerHTML = response;
+            }
+        },
+        error: function (request, error) {
+            alert("Request: " + JSON.stringify(request));
+        }
+    });
+    }
+</script>
+}

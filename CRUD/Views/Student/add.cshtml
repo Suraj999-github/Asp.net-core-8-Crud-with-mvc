@@ -1,0 +1,44 @@
+﻿@using CRUD.Models;
+@model AddStudent;
+
+<div class="container mt-3">
+    <h2>Add Student</h2>
+    <form method="post" asp-action="add" asp-controller="Student">
+        <div class="mb-3 mt-3">
+            <label for="FirstName">First Name:</label>
+            <input type="text" class="form-control" id="FirstName" placeholder="Enter your first name" name="FirstName" value="@Model.FirstName" required>
+        </div>
+        <div class="mb-3">
+            <label for="MiddleName">Middle Name:</label>
+            <input type="text" class="form-control" id="MiddleName" placeholder="Enter middle name" name="MiddleName" value="@Model.MiddleName">
+        </div>
+        <div class="mb-3">
+            <label for="LastName">Last Name:</label>
+            <input type="text" class="form-control" id="LastName" placeholder="Enter your last name" name="LastName" value="@Model.LastName" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="PhoneNumber">Phone Number:</label>
+            <input type="number" class="form-control" id="PhoneNumber" placeholder="Enter your phone number" name="PhoneNumber" value="@Model.PhoneNumber" maxlength="10" required>
+        </div>
+        <div class="mb-3">
+            <label for="Salutation">Salutation:</label>
+            <select class="form-control" id="Salutation" name="Salutation" value="@Model.Salutation" required>
+                <option value="Mr">
+                    Mr
+                </option>
+                <option value="Mrs">
+                    Mrs
+                </option>
+                <option value="Miss">
+                    Miss
+                </option>
+                <option value="Madam">
+                    Madam
+                </option>
+            </select>           
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <a type="button" class="btn btn-warning" href="/student/list">Back</a>
+    </form>
+</div>

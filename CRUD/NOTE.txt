@@ -1,0 +1,20 @@
+Packages :
+Microsoft.EntityFrameworkCore
+Microsoft.EntityFrameworkCore.SqlServer
+Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation
+
+table
+CREATE TABLE [dbo].[students](
+	id Bigint           NOT NULL    IDENTITY    PRIMARY KEY,
+	phone_number [varchar](50) NULL,
+	salutation [nvarchar](10) NULL,
+	first_name [nvarchar](10) NULL,
+	middle_name [nvarchar](50) NULL,
+	last_name [nvarchar](10) NULL,	
+	created_date [datetime] default getdate()	
+	);
+	
+add ajax lib in shared layout 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>   
+Update program.cs file 
+add   ApplicationDbContext as given 
